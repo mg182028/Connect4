@@ -18,21 +18,27 @@ import random
         
 game = GameBoardConnect4()
 
-player = 0
-sampleSize = 100
+player = 2
+sampleSize = 64
 column = [random.randint(1,8) for i in range(sampleSize)]
 #column = [1] * sampleSize
 for i in range(0,sampleSize):
-    #column = i%3+1
-    if i > 10:
-        player = 1
-    else:
-        player = 2
+    print("\n")
+    myboard = game.playerAction(player,column[i])
+    if myboard == False:
+        print("Invalid Move")
+        print(player,"\n")
 #    print(column[i], player)
-    game.playerAction(player,column[i])
-
-myboard = game.boardState()
-
-for i in range(1,9):
-    print(myboard[i-1][:])   
-#print(game.boardState())
+    else:
+        #myboard = game.boardState()
+        finalBoard = myboard[0]
+        winner = myboard[1]
+        #print(myboard[1])
+        #print("\n")
+        for i in range(1,9):
+            pass
+            print(finalBoard[i-1][:])  
+        print("winner is ", winner)
+        #print(game.boardState()
+        player = player%2 + 1
+        #print (player)
